@@ -1,0 +1,134 @@
+body {
+    background-color: rgb(219, 216, 216);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.checklist {
+    position: relative;
+    background-color: white;
+    width: 100px;
+    height: 140px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    align-items: center;
+    padding: 30px 45px; 
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(#414856, 0.05);
+}
+label {
+    color: #414856;
+    position: relative;
+    cursor: pointer;
+    transform: color 0.3s ease  ;
+    color: black;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+label::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border-bottom: 2px solid black;
+    top: -50%;
+    left:-50% ;
+    overflow: hidden;
+}
+input {
+appearance: none;
+    position: relative;
+height: 15px;
+width: 15px;
+outline: none;
+border: 0;
+margin: 0 15px 0 0;
+cursor: pointer;
+}
+input::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    top: 25%;
+    left: 2px;
+}
+input::after {
+    content: " ";
+    position: absolute;
+    border-bottom: 3px solid black;
+    left: 0;
+    top: 25%;
+    width: 10px;
+    height: 3px;
+    border-left: 3px solid transparent;
+    border-bottom-left-radius: 50%;    
+}
+input:checked + label {
+color: gray;
+    animation: move .5s ease forwards;   
+}
+input:checked + label::after {
+    left: 0;
+    animation: line 0.5s ease forwards;
+}
+input:checked::before {
+    animation: firework .5s ease forwards .1s;
+}
+input:checked::after {
+ border-left: 3px solid black;
+ top: 0%;
+    transform: rotate(-45deg)
+    translateX(-5px)
+    translateY(4px);    
+}
+@keyframes move {
+50% {
+    padding-left: 8px;
+}
+}  
+@keyframes line {
+    0%{
+        left: -50%;
+    }
+    10% {left: -25%;
+    }   
+}
+@keyframes firework {
+    0% {
+      opacity: 1;
+      box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+    }
+  }
+  @keyframes check-01 {
+    0% {
+      width: 4px;
+      top: auto;
+      transform: rotate(0);
+    }
+    50% {
+      width: 0px;
+      top: auto;
+      transform: rotate(0);
+    }
+    51% {
+      width: 0px;
+      top: 8px;
+      transform: rotate(45deg);
+    }
+    100% {
+      width: 5px;
+      top: 8px;
+      transform: rotate(45deg);
+    }
+  }
